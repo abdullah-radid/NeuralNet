@@ -46,21 +46,36 @@ function renderDiscussions() {
             <div class="user-info">${discussion.username}</div>
             <h2 class="post-title">${discussion.title}</h2>
             <p class="post-content">${discussion.content}</p>
-            <div class="upvote">
-                <button class="upvote-btn" onclick="upvote(this, ${discussion.id})">⬆️</button>
+            <div class="vote-buttons">
+                <button onclick="upvote(${discussion.id})">⬆️</button>
                 <span>${discussion.upvotes}</span>
+                <button onclick="downvote(${discussion.id})">⬇️</button>
+                <button class="delete-btn" onclick="deleteDiscussion(${discussion.id})">🗑️</button>
             </div>
         `;
         discussionsDiv.appendChild(discussionEl);
     });
 }
 
-function upvote(button, id) {
-    const discussion = discussionsData.find(d => d.id === id);
-    if (discussion) {
-        discussion.upvotes++;
+function upvote(id) {
+    const post = discussionsData.find(d => d.id === id);
+    if (post) {
+        post.upvotes++;
         renderDiscussions();
     }
+}
+
+function downvote(id) {
+    const post = discussionsData.find(d => d.id === id);
+    if (post && post.upvotes > 0) {
+        post.upvotes--;
+        renderDiscussions();
+    }
+}
+
+function deleteDiscussion(id) {
+    discussionsData = discussionsData.filter(d => d.id !== id);
+    renderDiscussions();
 }
 
 function sortDiscussions() {
