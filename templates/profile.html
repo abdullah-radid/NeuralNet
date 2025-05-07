@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profile – NeuralNet</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <style>
+  
+    body.loginpage {
+      zoom: 0.9;
+      transform-origin: top center;
+    }
+  </style>
+</head>
+<body class="loginpage">
+
+  <div class="login-container">
+    <div class="login-image">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Profile Icon">
+    </div>
+
+    <div class="login-form animate-login">
+      <a href="{{ url_for('home') }}" class="back-button-inside">← Back to Dashboard</a>
+      <h1 class="neuralnet-title">Edit Profile</h1>
+
+      <form method="POST" action="/update_profile">
+        <div style="margin-bottom: 10px;">
+          <label><strong>Current Username:</strong></label>
+          <p style="margin: 4px 0 12px 0;">{{ current_user.username }}</p>
+        </div>
+        
+        <label for="new_username">New Username</label>
+        <input type="text" id="new_username" name="new_username" placeholder="New Username">
+        
+        <div style="margin-top: 20px;">
+          <label><strong>Current Email:</strong></label>
+          <p style="margin: 4px 0 12px 0;">{{ current_user.email }}</p>
+        </div>
+        
+        <label for="new_email">New Email</label>
+        <input type="email" id="new_email" name="new_email" placeholder="New Email">
+
+        <!-- Passwoed update -->
+        <label for="current_password">Current Password</label>
+        <input
+          type="password"
+          id="current_password"
+          name="current_password"
+          placeholder="Current Password"
+          required
+        >
+
+        <label for="new_password">New Password</label>
+        <input
+          type="password"
+          id="new_password"
+          name="new_password"
+          placeholder="New Password (leave blank to keep current)"
+        >
+
+        <button type="submit">Save Changes</button>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>

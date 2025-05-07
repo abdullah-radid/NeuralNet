@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home – NeuralNet</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body class="homepage">
+
+  <!-- Navigation -->
+  <nav class="user-nav">
+    <a href="{{ url_for('news') }}">News</a>
+    <a href="{{ url_for('forum') }}">Forum</a>
+    <a href="{{ url_for('about') }}">About Us</a>
+    <a href="{{ url_for('index') }}">Log Out</a>
+  </nav>
+
+  <!-- Homepage welcome Section -->
+  <div class="hero" style="margin-top: 140px;">
+    <h1 class="animate-slide">Welcome to NeuralNet</h1>
+    <p class="animate-fade-delayed">Explore the latest news, join discussions, and discover more.</p>
+  </div>
+
+  <!-- Dashboard -->
+  <section class="user-dashboard">
+    <h2>Dashboard</h2>
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>My Profile</h3>
+        <p>View and edit your profile.</p>
+        <a href="{{ url_for('profile') }}">Go</a>
+      </div>
+      <div class="card">
+        <h3>My Discussions</h3>
+  <p>Check your recent threads.</p>
+  <div id="discussion-list">
+    {% if my_posts %}
+      {% for post in my_posts %}
+        <p>
+          <a href="{{ url_for('forum') }}#post-{{ post.id }}" style="color:#4facfe; font-weight:500;">
+            {{ post.title }}
+          </a>
+        </p>
+      {% endfor %}
+    {% else %}
+      <p>No discussions yet.</p>
+    {% endif %}
+  </div>
+  <a href="{{ url_for('forum') }}?mine=true">View All</a>
+      </div>
+      <div class="card">
+        <h3>Bookmarked News</h3>
+        <p>Your saved articles.</p>
+        <div id="bookmarked-list">
+          {% if bookmarks %}
+            {% for article in bookmarks %}
+              <p>
+                <a href="{{ article.url }}" target="_blank" style="color:#4facfe; font-weight:500;">
+                  {{ article.title }}
+                </a>
+              </p>
+            {% endfor %}
+          {% else %}
+            <p>No bookmarks yet.</p>
+          {% endif %}
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; margin-top: 10px;">
+          <form method="GET" action="{{ url_for('clear_bookmarks') }}">
+            <button type="submit" style="
+              background: linear-gradient(to right, #4facfe, #00f2fe);
+              border: none;
+              padding: 6px 14px;
+              color: white;
+              font-weight: 500;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: background 0.3s ease;
+            ">Clear All</button>
+          </form>
+          <a href="{{ url_for('news') }}" style="color: #4facfe; font-weight: 500;">View</a>
+        </div>
+    </div>
+  </section>
+
+  <!-- Logo -->
+  <footer class="footer-logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="NeuralNet Logo">
+  </footer>
+
+</body>
+</html>

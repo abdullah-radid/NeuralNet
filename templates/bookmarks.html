@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Bookmarks – NeuralNet</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body class="homepage">
+
+  <!-- Navigation -->
+  <nav class="user-nav">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('news') }}">News Articles</a>
+    <a href="{{ url_for('Forum') }}">Forum</a>
+    <a href="{{ url_for('about') }}">About</a>
+  </nav>
+
+  <!-- Bookmarks section -->
+  <section class="user-dashboard">
+    <h2 class="animate-slide">Bookmarked News</h2>
+    <div class="dashboard-cards animate-fade-delayed">
+      <div class="card animate-fade">
+        <h3>Your Saved Articles</h3>
+        <div id="bookmark-list">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

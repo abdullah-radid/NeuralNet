@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – NeuralNet</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <style>
+    /* darker blue for contact links */
+    .contact-link {
+      color: #002d62;
+    }
+    .contact-link:hover {
+      color: #004a9f;
+    }
+  </style>
+</head>
+<body class="homepage">
+
+  <!-- Navigation -->
+  <nav class="user-nav">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('news') }}">News</a>
+    <a href="{{ url_for('forum') }}">Forum</a>
+    <a href="{{ url_for('index') }}">Log Out</a>
+
+  </nav>
+
+  <div class="hero">
+    <h1 class="animate-slide">About Us</h1>
+  </div>
+
+  <!-- Basic Intro paragraph -->
+  <section class="about-content" style="width:90%; max-width:800px; margin:0 auto; padding:20px 0;">
+    <p class="animate-fade-delayed" style="line-height:1.6; color:white;">
+      Our team at NeuralNet strives to bring people together using advanced artificial intelligence technology. 
+      We promote transparency and collaborative efforts while encouraging all users to contribute to the
+      development of intelligent technology. Our whole atmosphere allows students, developers, and other 
+      tech enthusiast to collaborate on anything they would desire. Our team puts in the best-effort to make
+      sure our users get the smoothest experience possible. Our goal is to further open the doors of
+      interaction throughout the world, in a new and uniquely fun way 
+      
+    </p>
+
+    <!-- Contact Us Section -->
+    <div class="contact-us" style="margin-top:40px; text-align:center;">
+      <h2 class="animate-slide" style="color:white; margin-bottom:10px;">Contact Us</h2>
+      <p style="margin:5px 0;">
+        Email: 
+        <a href="mailto:customerservice@neuralnet.com" class="contact-link">
+          customerservice@neuralnet.com
+        </a>
+      </p>
+      <p style="margin:5px 0;">
+        Phone: 
+        <a href="tel:+18888888888" class="contact-link">
+          +1 (888)-888-8888
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!--Logo -->
+  <footer class="footer-logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="NeuralNet Logo">
+  </footer>
+
+</body>
+</html>
