@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home – NeuralNet</title>
+  
+    <!-- To link this page to the style sheet -->
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
 </head>
 <body class="homepage">
 
-  <!-- Navigation -->
+  <!-- Top navigation menu with the hyperlinks -->
   <nav class="user-nav">
     <a href="{{ url_for('news') }}">News</a>
     <a href="{{ url_for('forum') }}">Forum</a>
@@ -16,13 +19,14 @@
     <a href="{{ url_for('index') }}">Log Out</a>
   </nav>
 
-  <!-- Homepage welcome Section -->
+  <!-- Homepage welcome Section and subheading -->
   <div class="hero" style="margin-top: 140px;">
     <h1 class="animate-slide">Welcome to NeuralNet</h1>
     <p class="animate-fade-delayed">Explore the latest news, join discussions, and discover more.</p>
   </div>
 
-  <!-- Dashboard -->
+  <!--A discussion section which a user can access andmanage their forum posts-->
+  
   <section class="user-dashboard">
     <h2>Dashboard</h2>
     <div class="dashboard-cards">
@@ -49,6 +53,9 @@
   </div>
   <a href="{{ url_for('forum') }}?mine=true">View All</a>
       </div>
+
+     <!-- A saved news section where users can access their saved articles -->
+      
       <div class="card">
         <h3>Bookmarked News</h3>
         <p>Your saved articles.</p>
@@ -83,7 +90,7 @@
     </div>
   </section>
 
-  <!-- Logo -->
+  <!-- Neuralnet logo -->
   <footer class="footer-logo">
     <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="NeuralNet Logo">
   </footer>
