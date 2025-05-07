@@ -1,24 +1,28 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, session
 from flask_sqlalchemy import SQLAlchemy 
-#from sqlalchemy import and_
 from flask import flash
 from datetime import datetime
 
+# Here we will crete the Flask and connect it to the database
 
-app = Flask(__name__) #make new flask web server, call it app. __name__ tells flask this is main file.
-app.secret_key = 'dev_key_for_neuralnet_project' # Do i need a secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db' #3 forward slashes is relative path
+app = Flask(__name__)
+app.secret_key = 'dev_key_for_neuralnet_project' 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db' 
 db = SQLAlchemy(app)
 
+# This class is for storing user info
+
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key = True)  #integer that references  id of each entry, capacity is ~2 billion
-    username = db.Column(db.String(60), unique=True, nullable=False) # Holds each task
-    password = db.Column(db.String(60), nullable=False) # Holds each task
+    id = db.Column(db.Integer, primary_key = True)  
+    username = db.Column(db.String(60), unique=True, nullable=False) 
+    password = db.Column(db.String(60), nullable=False) 
     email = db.Column(db.String(120), unique=True, nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow) # any time new entry is created, time it was created
+    date_created = db.Column(db.DateTime, default=datetime.utcnow) 
 
     def __repr__(self):
-        return '<Task %r>' % self.id # every time we make new elem, its gonna return task and id of the task
+        return '<Task %r>' % self.id 
+        
+# This class will hold forum/discussion posts
 
 class Discussion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,16 +30,21 @@ class Discussion(db.Model):
     content = db.Column(db.Text, nullable=False)
     username = db.Column(db.String(100), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    
+# This class will keep a track of boookmarks for users
 
 class Bookmark(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(200))
     url = db.Column(db.String(300))
+    
+# page route
+@app.route('/', methods = ['POST', 'GET']) 
+def index(): 
+    return render_template("index.html") 
 
-@app.route('/', methods = ['POST', 'GET']) ## methods add GET and POST commands
-def index(): ##run dis function called index
-    return render_template("index.html") ##da function sends back this message to server
+#Route for the user dashboard (only if logged in)
 
 @app.route('/home')
 def home():
@@ -46,6 +55,8 @@ def home():
     my_posts = Discussion.query.filter_by(username=session['username']).order_by(Discussion.timestamp.desc()).all()
 
     return render_template("home.html", bookmarks=bookmarks, my_posts=my_posts)
+    
+# Route for the about us page
 
 @app.route('/about')
 def about():
@@ -53,6 +64,7 @@ def about():
         return redirect(url_for('login'))
     return render_template("about.html")
 
+# Route for the news page
 
 @app.route('/news')
 def news():
@@ -60,6 +72,7 @@ def news():
         return redirect(url_for('login'))
     return render_template("news.html")
 
+# Route for the profile editing page
 @app.route('/profile')
 def profile():
     if 'user_id' not in session:
@@ -68,7 +81,7 @@ def profile():
     user = User.query.get(session['user_id'])
     return render_template("profile.html", current_user=user)
 
-
+# Route for the login page and authentication
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -86,7 +99,8 @@ def login():
         return redirect(url_for('login'))
     
     return render_template("login.html")
-
+    
+# Route for the signup page after validation
 @app.route('/signup',  methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -113,6 +127,7 @@ def signup():
         return redirect(url_for("login"))
     return render_template("signup.html")
 
+# To log out the user by clearing their session data and redirect to login
 @app.route('/logout')
 def logout():
     session.clear()
@@ -121,6 +136,7 @@ def logout():
 
 @app.route('/forum')
 def forum():
+    # To list discussions, with optional filter for user’s own posts
     if 'user_id' not in session:
         return redirect(url_for('login'))
 
@@ -139,6 +155,8 @@ def forum():
         discussions[j + 1] = key
 
     return render_template("forum.html", discussions=discussions)
+    
+# Create a discussion post from data
 
 @app.route('/create_discussion', methods=['POST'])
 def create_discussion():
@@ -154,6 +172,8 @@ def create_discussion():
     db.session.commit()
 
     return redirect(url_for('forum'))
+    
+# Delete a discussion if owned by logged in user
 
 @app.route('/delete_discussion', methods=['POST'])
 def delete_discussion():
@@ -164,7 +184,6 @@ def delete_discussion():
     post = Discussion.query.get_or_404(discussion_id)
     user = User.query.get(session['user_id'])
 
-    # Only allow delete if user owns post
     if post.username != user.username:
         flash("You can't delete someone else's post.")
         return redirect(url_for('forum'))
@@ -173,6 +192,8 @@ def delete_discussion():
     db.session.commit()
     flash("Post deleted.")
     return redirect(url_for('forum'))
+    
+# To allow logged‑in user to change their username, email, or password
 
 @app.route('/update_profile', methods=['POST'])
 def update_profile():
@@ -202,6 +223,7 @@ def update_profile():
     db.session.commit()
     return redirect(url_for('profile'))
 
+# To add a bookmark if it doesn’t exist
 
 @app.route('/bookmark', methods=['POST'])
 def bookmark():
@@ -220,6 +242,8 @@ def bookmark():
         db.session.commit()
 
     return redirect(request.referrer or url_for('news'))
+    
+#  To remove all bookmarks for the user
 
 @app.route('/clear_bookmarks')
 def clear_bookmarks():
