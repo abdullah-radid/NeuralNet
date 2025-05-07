@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>News – NeuralNet</title>
+
+   <!-- To link this page to the style sheet -->
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+
+  <!-- Styles for the Save button to be next to the read mre link -->
   
   <style>
     form[action="/bookmark"] {
@@ -28,7 +33,7 @@
 </head>
 <body class="homepage">
 
-  <!-- Navigation -->
+  <!-- Navigatio menu at the top of the webpage -->
   <nav class="user-nav">
     <a href="{{ url_for('home') }}">Home</a>
     <a href="{{ url_for('forum') }}">Forum</a>
@@ -37,7 +42,7 @@
 
   </nav>
 
-  <!-- News Article section -->
+  <!-- Hard coded news atricles-->
   <section class="user-dashboard">
     <h2 class="animate-slide">Latest News</h2>
     <div class="dashboard-cards animate-fade-delayed">
