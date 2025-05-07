@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edit Profile – NeuralNet</title>
+
+   <!-- To link this page to the style sheet -->
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+
+  <!-- To scale the page to better fit on smaller screens -->
+  
   <style>
   
     body.loginpage {
@@ -15,11 +21,15 @@
 </head>
 <body class="loginpage">
 
+  <!-- Container that hows profile icon next to the edit form -->
+  
   <div class="login-container">
     <div class="login-image">
       <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Profile Icon">
     </div>
-
+    
+ <!-- Button to go back to the dashboard and for users to update their username, password and email -->
+    
     <div class="login-form animate-login">
       <a href="{{ url_for('home') }}" class="back-button-inside">← Back to Dashboard</a>
       <h1 class="neuralnet-title">Edit Profile</h1>
@@ -41,7 +51,7 @@
         <label for="new_email">New Email</label>
         <input type="email" id="new_email" name="new_email" placeholder="New Email">
 
-        <!-- Passwoed update -->
+        
         <label for="current_password">Current Password</label>
         <input
           type="password"
