@@ -9,7 +9,7 @@ body.homepage {
   padding-top: 100px; /* ensures nav doesn’t overlap hero/content */
 }
 
-/* Homepage style */
+/* Homepage and background style */
 .homepage {
   min-height: 100vh;
   background: linear-gradient(to right, #4facfe, #00f2fe);
@@ -20,7 +20,7 @@ body.homepage {
   padding-top: 120px;
 }
 
-/* Navigation */
+/* Navigation bar style  */
 .user-nav {
   position: fixed;
   top: 0;
@@ -46,7 +46,7 @@ body.homepage {
   text-shadow: 0 0 5px rgba(0,243,254,0.5);
 }
 
-/* Sidebar Menu Button */
+/* Sidebar Menu Button Style */
 .menu-button {
   position: absolute;
   top: 20px;
@@ -61,7 +61,8 @@ body.homepage {
   color: #00f2fe;
 }
 
-/* Sidebar */
+/* Sidebar panel style */
+
 .sidebar {
   height: 100%;
   width: 0;
@@ -105,6 +106,8 @@ body.homepage {
   margin-top: 72px;
 }
 
+/* Her section style for main title and subtitle  */ 
+
 .hero h1 {
   font-size: 4rem;
   color: white;
@@ -117,7 +120,8 @@ body.homepage {
   margin: 10px 0 20px;
 }
 
-/* Homepage Button */
+/* Homepage Button styles  */
+
 .btn {
   margin-top: 20px;
   padding: 12px 30px;
@@ -135,14 +139,14 @@ body.homepage {
   color: #fff;
 }
 
-/* Chatbot/NeuralNet-logo Image */
+/* Logo image style and size */
 .chatbot-image {
   width: 150px;
   height: 150px;
   margin-bottom: 20px;
 }
 
-/* Animations */
+/* Fade in/out animations */
 .animate-slide {
   opacity: 0;
   animation: slideInFromTop 2s ease forwards;
@@ -174,7 +178,8 @@ body.homepage {
   to { opacity: 1; }
 }
 
-/* Login and signup page styles */
+/* This makes the login and signup pages fill the screen with a gradient background and centers the form */
+
 .loginpage {
   background: linear-gradient(to right, #4facfe, #00f2fe);
   height: 100vh;
@@ -183,6 +188,8 @@ body.homepage {
   justify-content: center;
   font-family: Arial, sans-serif;
 }
+
+/* This will wrap the form and logo in a white card with rounded corners */
 
 .login-container {
   background: #fff;
@@ -194,6 +201,7 @@ body.homepage {
   max-width: 800px;
 }
 
+/* This will display the neuralnet image on a colored panel for visual aid */
 .login-image {
   flex: 1;
   background: #4facfe;
@@ -206,6 +214,8 @@ body.homepage {
   width: 250px;
 }
 
+/* This sniplet contains the input fields and buttons for user authentication */
+
 .login-form {
   flex: 1;
   padding: 80px 40px 40px;
@@ -214,6 +224,8 @@ body.homepage {
   justify-content: center;
   position: relative;
 }
+
+/* Provides a back button for so users can navigate to the previous page */
 
 .back-button-inside {
   position: absolute;
@@ -230,6 +242,8 @@ body.homepage {
   color: #00c6ff;
   text-decoration: underline;
 }
+
+/* To style the app title and form heading */
 
 .neuralnet-title {
   color: #4facfe;
@@ -252,6 +266,7 @@ body.homepage {
   border-radius: 6px;
   box-sizing: border-box;
 }
+/* Styles the submit button */
 
 .login-form button {
   margin-top: 10px;
@@ -268,7 +283,7 @@ body.homepage {
 .login-form button:hover {
   background: #00c6ff;
 }
-
+/* Aligns/centers the login and signup links under the form */
 .login-form p,
 .login-form a {
   text-align: center;
@@ -301,7 +316,8 @@ body.homepage {
   }
 }
 
-/* Dashboard section after loggin in */
+/* Dashboard section layout after loggin in */
+
 .user-dashboard {
   width: 90%;
   max-width: 1200px;
@@ -352,7 +368,7 @@ body.homepage {
   color: #00f2fe;
 }
 
-/* Footer Logo */
+/* Centers a small Neuralnet logo  in the pages */
 .footer-logo {
   text-align: center;
   margin: 30px 0;
@@ -366,6 +382,9 @@ body.homepage {
 body.homepage .hero {
   margin-top: 160px;
 }
+
+
+/* Full-screen background with centered content */
 
 .landingpage {
   height: 100vh;
