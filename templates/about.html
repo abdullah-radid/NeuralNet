@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us – NeuralNet</title>
+
+  <!-- To link this page to the style sheet -->
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
   <style>
-    /* darker blue for contact links */
+/* Style for the contact line */   
     .contact-link {
       color: #002d62;
     }
@@ -17,7 +20,7 @@
 </head>
 <body class="homepage">
 
-  <!-- Navigation -->
+  <!-- Top navigation menu -->
   <nav class="user-nav">
     <a href="{{ url_for('home') }}">Home</a>
     <a href="{{ url_for('news') }}">News</a>
@@ -30,7 +33,7 @@
     <h1 class="animate-slide">About Us</h1>
   </div>
 
-  <!-- Basic Intro paragraph -->
+  <!-- Basic Intro paragraph about NeuralNet -->
   <section class="about-content" style="width:90%; max-width:800px; margin:0 auto; padding:20px 0;">
     <p class="animate-fade-delayed" style="line-height:1.6; color:white;">
       Our team at NeuralNet strives to bring people together using advanced artificial intelligence technology. 
@@ -42,7 +45,7 @@
       
     </p>
 
-    <!-- Contact Us Section -->
+    <!-- To display the contatc information for NeuralNet on the WebApp-->
     <div class="contact-us" style="margin-top:40px; text-align:center;">
       <h2 class="animate-slide" style="color:white; margin-bottom:10px;">Contact Us</h2>
       <p style="margin:5px 0;">
@@ -60,7 +63,7 @@
     </div>
   </section>
 
-  <!--Logo -->
+  <!-- Company logo to display on the webpage-->
   <footer class="footer-logo">
     <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="NeuralNet Logo">
   </footer>
