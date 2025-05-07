@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeuralNet - Home</title>
+
+     <!-- To link this page to the style sheet -->
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
 </head>
 <body class="landingpage">
 
-    <!-- Menu Button -->
+    <!-- For the menu button on the top left corner of the page -->
+    
     <div class="menu-button">
         <span onclick="openNav()">☰ Menu</span>
     </div>
 
-    <!-- Sidebar -->
+    <!-- For the sidebar right beside the menu button -->
+    
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="{{ url_for('login') }}">Login</a>
         <a href="{{ url_for('signup') }}">Signup</a>
     </div>
 
-    <!-- Content and logo -->
+    <!-- The welcome page content sucha as the heading and the subheading -->
     <div class="hero">
         <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chatbot Icon" class="chatbot-image animate-fade">
         <h1 class="animate-slide">NeuralNet</h1>
@@ -28,6 +33,8 @@
         <a href="{{ url_for('login') }}" class="btn">Get Started</a>
     </div>
 
+    <!-- Javascript to open/close the sidebar -->
+    
     <script>
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
