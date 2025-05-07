@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forum – NeuralNet</title>
+
+  <!-- To link this page to the style sheet -->
+  
   <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
   <style>
     
@@ -23,7 +26,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* Discussion entry styles*/
+    /* Styles for discussion entry*/
     .discussion-entry {
     border-top: 1px solid #eee;
     padding: 16px 0;
@@ -81,7 +84,7 @@
 </head>
 <body class="homepage">
 
-  <!-- Navigation -->
+  <!-- Top navigation menu with hyperlinks to different pages -->
   <nav class="user-nav">
     <a href="{{ url_for('home') }}">Home</a>
     <a href="{{ url_for('news') }}">News</a>
@@ -89,6 +92,8 @@
     <a href="{{ url_for('index') }}">Log Out</a>
   </nav>
 
+  <!-- For the page title and subtitle-->
+  
   <div class="hero">
     <h1 class="animate-slide">Community Discussions</h1>
     <p class="animate-fade-delayed">Share your thoughts & ask questions</p>
@@ -96,7 +101,7 @@
 
   <main>
     <div class="forum-container animate-fade">
-      <!-- Start a Discussion -->
+      <!-- Option to start a new discussion -->
       <h3>Start a Discussion</h3>
       <form method="POST" action="/create_discussion">
         <input
@@ -115,7 +120,7 @@
         <button type="submit" class="btn">Post Discussion</button>
       </form>
 
-      <!-- All Discussions -->
+      <!-- This will list all the discussions that have been posted and give an option to delete -->
       <div style="margin-top:40px;">
         <h3>All Discussions</h3>
         <div id="discussions-list">
@@ -140,7 +145,7 @@
     </div>
   </main>
 
-  <!-- Logo -->
+  <!-- Neuralnet logo -->
   <footer class="footer-logo">
     <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="NeuralNet Logo">
   </footer>
